@@ -6,23 +6,39 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AgendaWeb.Models
 {
-    public class Service
+    public class VisitReason
     {
         public int Id { get; set; }
+
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
+
         [MaxLength(250)]
         public string Description { get; set; }
+
+        [Required]
+        public int Duration { get; set; }
+
         public bool Enabled { get; set; }
 
-        
+        [Required]
+        public string Abreviation { get; set; }
+
+        [Required]
         [ForeignKey("Speciality")]
         public int SpecialityId { get; set; }
-        [ForeignKey("Style")]
-        public int StyleId { get; set; }
 
-        public Style Style { get; set; }
+        [Required]
+        [ForeignKey("ResourcePlan")]
+        public int ResourcePlanId { get; set; }
+
+
         public Speciality Speciality { get; set; }
+
+        public ResourcePlan ResourcePlan { get; set; }
+
+        public ICollection<VisitReasonService> VisitReasonServices { get; set; }
+
     }
 }

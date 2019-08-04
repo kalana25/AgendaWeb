@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AgendaWeb.Models
 {
-    public class Speciality
+    public class ResourcePlan
     {
         public int Id { get; set; }
         [Required]
@@ -14,6 +14,6 @@ namespace AgendaWeb.Models
         [MaxLength(250)]
         public string Description { get; set; }
 
-        public ICollection<Service> Services { get; set; }
+        public ICollection<ResourceProfile> PlanProfiles { get; set; }
     }
 }
