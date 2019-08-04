@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using AgendaWeb.Core.Interfaces;
 using AgendaWeb.UseCases.General.Styles.GetCustomStyles;
+using AgendaWeb.UseCases.General.Styles.GetAllStyle;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AgendaWeb.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Styles")]
     public class StylesController : Controller
     {
         private readonly IUseCaseFactory usecaseFactory;
@@ -20,7 +21,7 @@ namespace AgendaWeb.API.Controllers
             this.usecaseFactory = usecaseFactory;
         }
 
-        [HttpGet("find/custome/{customeStyle}")]
+        [HttpGet("custome/{customeStyle}")]
         public async Task<IActionResult> GetCustomeStyles(bool customeStyle)
         {
             try
@@ -32,15 +33,24 @@ namespace AgendaWeb.API.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
         // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("findall")]
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var findAllStyles = this.usecaseFactory.Create<GetAllStyleUseCase>();
+                var result = await findAllStyles.Execute();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError,ex.Message);
+            }
         }
 
         // GET api/<controller>/5
