@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
 using AgendaWeb.DAL;
 using AgendaWeb.Core.General;
+using AutoMapper;
 using AgendaWeb.Core.DI;
 
 namespace AgendaWeb.API
@@ -31,6 +32,12 @@ namespace AgendaWeb.API
         {
             this.AppSettings = services.AddServiceCore(Configuration);
             services.AutoDIRegisterService();
+            var autoMapper = new AutoMapper.MapperConfiguration(c =>
+            {
+                c.AddProfile(new MappingProfile());
+            });
+            var mapper = autoMapper.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(AppSettings.ConnectionString.Development));
 
