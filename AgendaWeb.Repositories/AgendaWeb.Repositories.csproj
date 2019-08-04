@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgendaWeb.Core\AgendaWeb.Core.csproj" />
+    <ProjectReference Include="..\AgendaWeb.DAL\AgendaWeb.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

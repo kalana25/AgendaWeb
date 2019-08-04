@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaWeb.Models", "AgendaWeb.Models\AgendaWeb.Models.csproj", "{CB3CE15F-4E39-4DC8-B8D7-1D8BDE570C90}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaWeb.DAL", "AgendaWeb.DAL\AgendaWeb.DAL.csproj", "{3434130E-D90E-4A5F-8AAC-DC97B8A021B6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaWeb.Repositories", "AgendaWeb.Repositories\AgendaWeb.Repositories.csproj", "{5CB9A8ED-5402-470C-A2D2-6337FA3BFA73}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaWeb.Core", "AgendaWeb.Core\AgendaWeb.Core.csproj", "{595B78EA-8C49-444F-AD37-28FF163DB327}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaWeb.UseCases", "AgendaWeb.UseCases\AgendaWeb.UseCases.csproj", "{73B23AA1-4EF9-4EDB-AE6F-79AF28CDF555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaWeb.API", "AgendaWeb.API\AgendaWeb.API.csproj", "{D0C58A34-651C-4A1A-90A3-8857935C5165}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB3CE15F-4E39-4DC8-B8D7-1D8BDE570C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB3CE15F-4E39-4DC8-B8D7-1D8BDE570C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB3CE15F-4E39-4DC8-B8D7-1D8BDE570C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB3CE15F-4E39-4DC8-B8D7-1D8BDE570C90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3434130E-D90E-4A5F-8AAC-DC97B8A021B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3434130E-D90E-4A5F-8AAC-DC97B8A021B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3434130E-D90E-4A5F-8AAC-DC97B8A021B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3434130E-D90E-4A5F-8AAC-DC97B8A021B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB9A8ED-5402-470C-A2D2-6337FA3BFA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB9A8ED-5402-470C-A2D2-6337FA3BFA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB9A8ED-5402-470C-A2D2-6337FA3BFA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB9A8ED-5402-470C-A2D2-6337FA3BFA73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{595B78EA-8C49-444F-AD37-28FF163DB327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{595B78EA-8C49-444F-AD37-28FF163DB327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{595B78EA-8C49-444F-AD37-28FF163DB327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{595B78EA-8C49-444F-AD37-28FF163DB327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73B23AA1-4EF9-4EDB-AE6F-79AF28CDF555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73B23AA1-4EF9-4EDB-AE6F-79AF28CDF555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73B23AA1-4EF9-4EDB-AE6F-79AF28CDF555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73B23AA1-4EF9-4EDB-AE6F-79AF28CDF555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0C58A34-651C-4A1A-90A3-8857935C5165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0C58A34-651C-4A1A-90A3-8857935C5165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0C58A34-651C-4A1A-90A3-8857935C5165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0C58A34-651C-4A1A-90A3-8857935C5165}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED74944A-DFB6-4061-842B-5A0B40DA90C8}
+	EndGlobalSection
+EndGlobal
