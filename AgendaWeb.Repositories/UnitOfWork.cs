@@ -13,10 +13,10 @@ namespace AgendaWeb.Repositories
         private readonly DataBaseContext context;
         public IStyleRepository Styles { get; private set; }
 
-        public UnitOfWork(DataBaseContext context)
+        public UnitOfWork(DataBaseContext context,IStyleRepository styleRepository)
         {
             this.context = context;
-            this.Styles = new StyleRepository(context);
+            this.Styles = styleRepository;
         }
 
         public async Task<int> Complete()
