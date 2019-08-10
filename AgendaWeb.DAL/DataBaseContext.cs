@@ -17,5 +17,6 @@ namespace AgendaWeb.DAL
         public DbSet<Style> Styles { get; set; }
         public DbSet<ResourcePlan> ResourcePlans { get; set; }
         public DbSet<ResourceProfile> ResourceProfiles { get; set; }
+        public DbSet<ResourcePlanProfile> ResourcePlanProfiles { get; set; }
     }
 }

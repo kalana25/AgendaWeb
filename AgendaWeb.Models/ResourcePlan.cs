@@ -14,8 +14,6 @@ namespace AgendaWeb.Models
         [MaxLength(250)]
         public string Description { get; set; }
 
-        public ICollection<ResourceProfile> ResourceProfiles { get; set; }
-
-        //public ICollection<ResourceProfile> PlanProfiles { get; set; }
+        public ICollection<ResourcePlanProfile> PlanProfiles { get; set; }
     }
 }
