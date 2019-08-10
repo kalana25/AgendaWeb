@@ -36,9 +36,12 @@ namespace AgendaWeb.Repositories.ResourcePlans
             throw new NotImplementedException();
         }
 
-        public Task<ResourcePlan> GetResourcePlanWithProfiles(int id)
+        public async Task<ResourcePlan> GetResourcePlanWithProfiles(int id)
         {
-            throw new NotImplementedException();
+            return await DatabaseContext.ResourcePlans
+                .Include(p => p.PlanProfiles)
+                .ThenInclude(pp => pp.ResourceProfile)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public DataBaseContext DatabaseContext
