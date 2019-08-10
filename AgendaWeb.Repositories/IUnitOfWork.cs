@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using AgendaWeb.Repositories.Styles;
+using AgendaWeb.Repositories.ResourceProfiles;
 using AgendaWeb.Core.DI;
 
 
@@ -12,6 +13,7 @@ namespace AgendaWeb.Repositories
     public interface IUnitOfWork : IDisposable
     {
         IStyleRepository Styles { get; }
+        IResourceProfileRepository ResourceProfile { get; }
         Task<int> Complete();
     }
 }

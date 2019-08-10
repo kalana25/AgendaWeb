@@ -21,6 +21,8 @@ namespace AgendaWeb.API
                 .ForMember(d => d.Id, m => m.MapFrom(o => o.Id))
                 .ForMember(d => d.Name, m => m.MapFrom(o => o.Name));
 
+            CreateMap<ResourceProfileDTO, ResourceProfile>();
+
             #endregion
 
             #region ModelToDTO
