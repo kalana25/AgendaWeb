@@ -19,7 +19,8 @@ namespace AgendaWeb.Repositories.ResourcePlans
         public async Task<IEnumerable<ResourcePlan>> GetAllResourcePlanWithProfiles()
         {
             return await DatabaseContext.ResourcePlans
-                .Include(p => p.ResourceProfiles)
+                .Include(p => p.PlanProfiles)
+                .ThenInclude(pp=>pp.ResourceProfile)
                 .OrderBy(p => p.Name)
                 .ToListAsync();
         }
