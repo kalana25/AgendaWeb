@@ -15,6 +15,7 @@ namespace AgendaWeb.DAL
 
         public DbSet<Service> Services { get; set; }
         public DbSet<Style> Styles { get; set; }
+        public DbSet<ResourcePlan> ResourcePlans { get; set; }
         public DbSet<ResourceProfile> ResourceProfiles { get; set; }
     }
 }

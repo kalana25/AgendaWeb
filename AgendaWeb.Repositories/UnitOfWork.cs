@@ -5,7 +5,7 @@ using AgendaWeb.Repositories.Styles;
 using AgendaWeb.Repositories.ResourceProfiles;
 using System.Threading.Tasks;
 using AgendaWeb.DAL;
-
+using AgendaWeb.Repositories.ResourcePlans;
 
 namespace AgendaWeb.Repositories
 {
@@ -13,14 +13,17 @@ namespace AgendaWeb.Repositories
     {
         private readonly DataBaseContext context;
         public IStyleRepository Styles { get; private set; }
-        public IResourceProfileRepository ResourceProfile { get; set; }
+        public IResourceProfileRepository ResourceProfile { get; private set; }
+        public IResourcePlanRepository ResourcePlans { get; private set; }
 
         public UnitOfWork(DataBaseContext context,
             IStyleRepository styleRepository,
+            IResourcePlanRepository resourcePlanRepository,
             IResourceProfileRepository resourceProfileRepository)
         {
             this.context = context;
             this.Styles = styleRepository;
+            this.ResourcePlans = resourcePlanRepository;
             this.ResourceProfile = resourceProfileRepository;
         }
 
