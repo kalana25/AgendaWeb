@@ -15,11 +15,14 @@ namespace AgendaWeb.UseCases.General.ResourcePlans.SaveResourcePlan
     {
         public ResourcePlanSaveDTO DTO { get; set; }
 
+        private readonly IMapper mapper;
         private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper; 
 
-        public SaveResourcePlanUseCase(IUnitOfWork unitOfWork)
+        public SaveResourcePlanUseCase(
+            IMapper mapper,
+            IUnitOfWork unitOfWork)
         {
+            this.mapper = mapper;
             this.unitOfWork = unitOfWork;
         }
 

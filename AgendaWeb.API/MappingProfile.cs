@@ -23,11 +23,24 @@ namespace AgendaWeb.API
 
             CreateMap<ResourceProfileDTO, ResourceProfile>();
 
+            CreateMap<ResourcePlanSaveDTO, ResourcePlan>();
+
             #endregion
 
             #region ModelToDTO
 
+            CreateMap<ResourcePlanProfile, ResourceProfileInfoDTO>()
+                .ForMember(d => d.Id, m => m.MapFrom(o => o.ResourceProfile.Id))
+                .ForMember(d => d.Name, m => m.MapFrom(o => o.ResourceProfile.Name))
+                .ForMember(d => d.Description, m => m.MapFrom(o => o.ResourceProfile.Description));
 
+            CreateMap<ResourcePlan, ResourcePlanWithProfileInfoDTO>()
+                .ForMember(d => d.Id, m => m.MapFrom(o => o.Id))
+                .ForMember(d => d.Name, m => m.MapFrom(o => o.Name))
+                .ForMember(d => d.Description, m => m.MapFrom(o => o.Description))
+                .ForMember(d => d.ResourceProfiles, m => m.MapFrom(o=>o.PlanProfiles));
+            //.ForMember(d => d.ResourceProfiles, m => m.Ignore());
+            
             #endregion
         }
     }

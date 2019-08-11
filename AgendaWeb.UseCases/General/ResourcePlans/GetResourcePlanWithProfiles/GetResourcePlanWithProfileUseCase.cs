@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AutoMapper;
+using AgendaWeb.UseCases.DTO;
 using AgendaWeb.Models;
 using AgendaWeb.Repositories;
 using System.Threading.Tasks;
@@ -24,9 +25,11 @@ namespace AgendaWeb.UseCases.General.ResourcePlans.GetResourcePlanWithProfiles
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<ResourcePlan> Execute()
+        public async Task<ResourcePlanWithProfileInfoDTO> Execute()
         {
-            return await unitOfWork.ResourcePlans.GetResourcePlanWithProfiles(this.Id);
+            ResourcePlan resourcePlan = await unitOfWork.ResourcePlans.GetResourcePlanWithProfiles(this.Id);
+            ResourcePlanWithProfileInfoDTO result = mapper.Map<ResourcePlan, ResourcePlanWithProfileInfoDTO>(resourcePlan);
+            return result;
         }
     }
 }
