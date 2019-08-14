@@ -9,6 +9,7 @@ using AgendaWeb.UseCases.General.ResourcePlans.GetAllResourcePlansWithProfiles;
 using AgendaWeb.UseCases.General.ResourcePlans.SaveResourcePlan;
 using AgendaWeb.UseCases.General.ResourcePlans.GetResourcePlanWithProfiles;
 using AgendaWeb.UseCases.General.ResourcePlans.UpdateResourcePlan;
+using AgendaWeb.UseCases.General.ResourcePlans.DeleteResourcePlan;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -109,6 +110,26 @@ namespace AgendaWeb.API.Controllers
                     return Ok(result);
                 }
                 return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    return NotFound();
+                }
+                var deleteResourcePlan = usecaseFactory.Create<DeleteResourcePlanWithProfileUseCase>();
+                deleteResourcePlan.Id = id;
+                var result = await deleteResourcePlan.Execute();
+                return NoContent();
             }
             catch (Exception ex)
             {

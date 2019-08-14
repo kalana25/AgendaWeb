@@ -44,6 +44,12 @@ namespace AgendaWeb.Repositories.ResourcePlans
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public void Delete(ResourcePlan resourcePlan)
+        {
+            DatabaseContext.ResourcePlanProfiles.RemoveRange(resourcePlan.PlanProfiles);
+            DatabaseContext.ResourcePlans.Remove(resourcePlan);
+        }
+
         public DataBaseContext DatabaseContext
         {
             get { return context as DataBaseContext; }

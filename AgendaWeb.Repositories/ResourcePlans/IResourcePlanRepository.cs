@@ -14,5 +14,6 @@ namespace AgendaWeb.Repositories.ResourcePlans
         Task<IEnumerable<ResourcePlan>> GetAllResourcePlanWithProfiles();
         Task<ResourcePlan> GetResourcePlanWithProfiles(int id);
         Task<IEnumerable<ResourcePlan>> GetPaginatedResourcePlanWithProfiles(int pageIndex, int pageSize);
+        void Delete(ResourcePlan resourcePlan);
     }
 }
