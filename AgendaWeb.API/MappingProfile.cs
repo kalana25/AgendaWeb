@@ -25,6 +25,12 @@ namespace AgendaWeb.API
 
             CreateMap<ResourcePlanSaveDTO, ResourcePlan>();
 
+            CreateMap<ResourcePlanUpdateDTO, ResourcePlan>()
+                .ForMember(d => d.Id, m => m.MapFrom(o => o.Id))
+                .ForMember(d => d.Name, m => m.MapFrom(o => o.Name))
+                .ForMember(d => d.Description, m => m.MapFrom(o => o.Description))
+                .ForMember(d => d.PlanProfiles, m => m.Ignore());
+
             #endregion
 
             #region ModelToDTO

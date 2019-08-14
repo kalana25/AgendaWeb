@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using AgendaWeb.UseCases.General.ResourcePlans.GetAllResourcePlansWithProfiles;
 using AgendaWeb.UseCases.General.ResourcePlans.SaveResourcePlan;
 using AgendaWeb.UseCases.General.ResourcePlans.GetResourcePlanWithProfiles;
+using AgendaWeb.UseCases.General.ResourcePlans.UpdateResourcePlan;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -78,6 +79,34 @@ namespace AgendaWeb.API.Controllers
                     saveResourceProfile.DTO = resourcePlan;
                     var result = await saveResourceProfile.Execute();
                     return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
+                }
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id,[FromBody] ResourcePlanUpdateDTO resourcePlan)
+        {
+            try
+            {
+                if (id < 0)
+                {
+                    return NotFound();
+                }
+                if(resourcePlan == null)
+                {
+                    return BadRequest();
+                }
+                if (ModelState.IsValid)
+                {
+                    var updateResourcePlan = this.usecaseFactory.Create<UpdateResourcePlanUseCase>();
+                    updateResourcePlan.DTO = resourcePlan;
+                    var result = await updateResourcePlan.Execute();
+                    return Ok(result);
                 }
                 return BadRequest();
             }
