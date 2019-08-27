@@ -25,15 +25,14 @@ namespace AgendaWeb.Repositories.ResourcePlans
                 .ToListAsync();
         }
 
-        public Task<IEnumerable<ResourcePlan>> GetPaginatedResourcePlanWithProfiles(int pageIndex, int pageSize)
+        public async Task<IEnumerable<ResourcePlan>> GetPaginatedResourcePlanWithProfiles(int pageIndex, int pageSize)
         {
-            //return await DatabaseContext.ResourcePlans
-            //    .Include(p => p.PlanProfiles)
-            //    .OrderBy(s => s.Name)
-            //    .Skip((pageIndex - 1) * pageSize)
-            //    .Take(pageSize)
-            //    .ToListAsync();
-            throw new NotImplementedException();
+            return await DatabaseContext.ResourcePlans
+                .Include(p => p.PlanProfiles)
+                .OrderBy(s => s.Name)
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
 
         public async Task<ResourcePlan> GetResourcePlanWithProfiles(int id)
