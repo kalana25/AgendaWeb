@@ -18,5 +18,8 @@ namespace AgendaWeb.DAL
         public DbSet<ResourcePlan> ResourcePlans { get; set; }
         public DbSet<ResourceProfile> ResourceProfiles { get; set; }
         public DbSet<ResourcePlanProfile> ResourcePlanProfiles { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Communication> Communications { get; set; }
     }
 }
