@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using AgendaWeb.DAL;
 using AgendaWeb.Repositories.ResourcePlans;
 using AgendaWeb.Repositories.Patients;
+using AgendaWeb.Repositories.Addresses;
+using AgendaWeb.Repositories.Communications;
 
 namespace AgendaWeb.Repositories
 {
@@ -17,18 +19,24 @@ namespace AgendaWeb.Repositories
         public IResourceProfileRepository ResourceProfile { get; private set; }
         public IResourcePlanRepository ResourcePlans { get; private set; }
         public IPatientRepository Patients { get; set; }
+        public IAddressRepository Addresses { get; set; }
+        public ICommunicationRepository Communications { get; set; }
 
         public UnitOfWork(DataBaseContext context,
             IStyleRepository styleRepository,
             IResourcePlanRepository resourcePlanRepository,
             IResourceProfileRepository resourceProfileRepository,
-            IPatientRepository patientRepository)
+            IPatientRepository patientRepository,
+            IAddressRepository addressRepository,
+            ICommunicationRepository communicationRepository)
         {
             this.context = context;
-            this.Styles = styleRepository;
-            this.ResourcePlans = resourcePlanRepository;
-            this.ResourceProfile = resourceProfileRepository;
-            this.Patients = patientRepository;
+            Styles = styleRepository;
+            ResourcePlans = resourcePlanRepository;
+            ResourceProfile = resourceProfileRepository;
+            Patients = patientRepository;
+            Addresses = addressRepository;
+            Communications = communicationRepository;
         }
 
         public async Task<int> Complete()

@@ -6,6 +6,8 @@ using AgendaWeb.Repositories.Styles;
 using AgendaWeb.Repositories.ResourceProfiles;
 using AgendaWeb.Repositories.ResourcePlans;
 using AgendaWeb.Repositories.Patients;
+using AgendaWeb.Repositories.Addresses;
+using AgendaWeb.Repositories.Communications;
 using AgendaWeb.Core.DI;
 
 
@@ -18,6 +20,8 @@ namespace AgendaWeb.Repositories
         IResourceProfileRepository ResourceProfile { get; }
         IResourcePlanRepository ResourcePlans { get; }
         IPatientRepository Patients { get; }
+        IAddressRepository Addresses { get; }
+        ICommunicationRepository Communication { get; }
         Task<int> Complete();
     }
 }

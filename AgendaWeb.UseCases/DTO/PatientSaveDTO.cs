@@ -19,7 +19,7 @@ namespace AgendaWeb.UseCases.DTO
         [MaxLength(12)]
         public string NIC { get; set; }
 
-        public AddressInfoDTO Address { get; set; }
+        public AddressSaveDTO Address { get; set; }
 
         public CommunicationSaveDTO Communication { get; set; }
     }
