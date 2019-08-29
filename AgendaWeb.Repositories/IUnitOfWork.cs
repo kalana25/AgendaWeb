@@ -21,7 +21,7 @@ namespace AgendaWeb.Repositories
         IResourcePlanRepository ResourcePlans { get; }
         IPatientRepository Patients { get; }
         IAddressRepository Addresses { get; }
-        ICommunicationRepository Communication { get; }
+        ICommunicationRepository Communications { get; }
         Task<int> Complete();
     }
 }

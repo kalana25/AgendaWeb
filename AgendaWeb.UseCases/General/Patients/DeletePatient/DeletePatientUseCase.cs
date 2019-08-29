@@ -24,7 +24,7 @@ namespace AgendaWeb.UseCases.General.Patients.DeletePatient
         {
             var patient = await unitOfWork.Patients.GetPatientWithFullInfor(Id);
             unitOfWork.Addresses.Remove(patient.Address);
-            unitOfWork.Communication.Remove(patient.Communication);
+            unitOfWork.Communications.Remove(patient.Communication);
             unitOfWork.Patients.Remove(patient);
             await unitOfWork.Complete();
             return patient.Id;

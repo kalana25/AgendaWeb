@@ -8,6 +8,7 @@ using AgendaWeb.UseCases.DTO;
 using AgendaWeb.UseCases.General.Patients.GetAllPatientWithFullInfo;
 using AgendaWeb.UseCases.General.Patients.GetPatientWithFullInfo;
 using AgendaWeb.UseCases.General.Patients.SavePatient;
+using AgendaWeb.UseCases.General.Patients.DeletePatient;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -87,5 +88,24 @@ namespace AgendaWeb.API.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    return NotFound();
+                }
+                var deletePatient = usecaseFactory.Create<DeletePatientUseCase>();
+                deletePatient.Id = id;
+                await deletePatient.Execute();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
     }
 }
