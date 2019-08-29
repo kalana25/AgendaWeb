@@ -31,6 +31,19 @@ namespace AgendaWeb.API
                 .ForMember(d => d.Description, m => m.MapFrom(o => o.Description))
                 .ForMember(d => d.PlanProfiles, m => m.Ignore());
 
+            CreateMap<PatientSaveDTO, Patient>()
+                .ForMember(d => d.FristName, m => m.MapFrom(o => o.FristName))
+                .ForMember(d => d.LastName, m => m.MapFrom(o => o.LastName))
+                .ForMember(d => d.OtherNames, m => m.MapFrom(o => o.OtherNames))
+                .ForMember(d => d.NIC, m => m.MapFrom(o => o.NIC))
+                .ForMember(d => d.Address, m => m.MapFrom(o => o.Address))
+                .ForMember(d => d.Communication, m => m.MapFrom(o => o.Communication));
+
+            CreateMap<AddressSaveDTO, Address>();
+
+            CreateMap<CommunicationSaveDTO, Communication>();
+
+
             #endregion
 
             #region ModelToDTO
@@ -46,7 +59,18 @@ namespace AgendaWeb.API
                 .ForMember(d => d.Description, m => m.MapFrom(o => o.Description))
                 .ForMember(d => d.ResourceProfiles, m => m.MapFrom(o=>o.PlanProfiles));
             //.ForMember(d => d.ResourceProfiles, m => m.Ignore());
-            
+
+            CreateMap<Patient, PatientWithFullInfoDTO>()
+                .ForMember(d => d.Id, m => m.MapFrom(o => o.Id))
+                .ForMember(d => d.FristName, m => m.MapFrom(o => o.FristName))
+                .ForMember(d => d.LastName, m => m.MapFrom(o => o.LastName))
+                .ForMember(d => d.OtherNames, m => m.MapFrom(o => o.OtherNames))
+                .ForMember(d => d.NIC, m => m.MapFrom(o => o.NIC))
+                .ForMember(d => d.Address, m => m.MapFrom(o => o.Address))
+                .ForMember(d => d.Communication, m => m.MapFrom(o => o.Communication));
+
+
+
             #endregion
         }
     }

@@ -6,6 +6,7 @@ using AgendaWeb.Repositories.ResourceProfiles;
 using System.Threading.Tasks;
 using AgendaWeb.DAL;
 using AgendaWeb.Repositories.ResourcePlans;
+using AgendaWeb.Repositories.Patients;
 
 namespace AgendaWeb.Repositories
 {
@@ -15,16 +16,19 @@ namespace AgendaWeb.Repositories
         public IStyleRepository Styles { get; private set; }
         public IResourceProfileRepository ResourceProfile { get; private set; }
         public IResourcePlanRepository ResourcePlans { get; private set; }
+        public IPatientRepository Patients { get; set; }
 
         public UnitOfWork(DataBaseContext context,
             IStyleRepository styleRepository,
             IResourcePlanRepository resourcePlanRepository,
-            IResourceProfileRepository resourceProfileRepository)
+            IResourceProfileRepository resourceProfileRepository,
+            IPatientRepository patientRepository)
         {
             this.context = context;
             this.Styles = styleRepository;
             this.ResourcePlans = resourcePlanRepository;
             this.ResourceProfile = resourceProfileRepository;
+            this.Patients = patientRepository;
         }
 
         public async Task<int> Complete()
