@@ -43,6 +43,12 @@ namespace AgendaWeb.API
 
             CreateMap<CommunicationSaveDTO, Communication>();
 
+            CreateMap<PatientUpdateDTO, Patient>();
+
+            CreateMap<AddressInfoDTO, Address>();
+
+            CreateMap<CommunicationInfoDTO, Communication>();
+
 
             #endregion
 
@@ -69,7 +75,9 @@ namespace AgendaWeb.API
                 .ForMember(d => d.Address, m => m.MapFrom(o => o.Address))
                 .ForMember(d => d.Communication, m => m.MapFrom(o => o.Communication));
 
+            CreateMap<Address, AddressInfoDTO>();
 
+            CreateMap<Communication, CommunicationInfoDTO>();
 
             #endregion
         }
