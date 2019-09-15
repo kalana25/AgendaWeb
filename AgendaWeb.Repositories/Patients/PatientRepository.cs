@@ -33,7 +33,7 @@ namespace AgendaWeb.Repositories.Patients
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<IEnumerable<Patient>> GetPaginatedPatientWithFullInfo(int pageIndex, int pageSize)
+        public async Task<IEnumerable<Patient>> GetPaginatedPatientsWithFullInfo(int pageIndex, int pageSize)
         {
             return await DatabaseContext.Patients
                 .Include(p => p.Communication)

@@ -28,7 +28,7 @@ namespace AgendaWeb.UseCases.General.Patients.GetPaginatedPatientInfo
 
         public async Task<IEnumerable<PatientWithFullInfoDTO>> Execute()
         {
-            var patients = await this.unitOfWork.Patients.GetPaginatedPatientWithFullInfo(PageIndex, PageSize);
+            var patients = await this.unitOfWork.Patients.GetPaginatedPatientsWithFullInfo(PageIndex, PageSize);
             IEnumerable<PatientWithFullInfoDTO> result = mapper.Map<IEnumerable<Patient>, IEnumerable<PatientWithFullInfoDTO>>(patients);
             return result;
         }
