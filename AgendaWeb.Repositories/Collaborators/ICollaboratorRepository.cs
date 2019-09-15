@@ -7,7 +7,7 @@ using AgendaWeb.Models;
 namespace AgendaWeb.Repositories.Collaborators
 {
     [AutoDIService]
-    public interface ICollaboratorRepository
+    public interface ICollaboratorRepository: IRepository<Collaborator>
     {
         Task<Collaborator> GetCollaboratorWithFullInfor(int id);
         Task<IEnumerable<Collaborator>> GetAllCollaboratorsWithFullInfo();
