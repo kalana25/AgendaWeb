@@ -21,5 +21,6 @@ namespace AgendaWeb.DAL
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Communication> Communications { get; set; }
+        public DbSet<Collaborator> Collaborators { get; set; }
     }
 }
