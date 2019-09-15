@@ -12,6 +12,6 @@ namespace AgendaWeb.Repositories.Patients
     {
         Task<Patient> GetPatientWithFullInfor(int id);
         Task<IEnumerable<Patient>> GetAllPatientsWithFullInfo();
-
+        Task<IEnumerable<Patient>> GetPaginatedPatientWithFullInfo(int pageIndex, int pageSize);
     }
 }

@@ -10,6 +10,7 @@ using AgendaWeb.UseCases.General.Patients.GetPatientWithFullInfo;
 using AgendaWeb.UseCases.General.Patients.SavePatient;
 using AgendaWeb.UseCases.General.Patients.DeletePatient;
 using AgendaWeb.UseCases.General.Patients.UpdatePatient;
+using AgendaWeb.UseCases.General.Patients.GetPaginatedPatientInfo;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -131,6 +132,23 @@ namespace AgendaWeb.API.Controllers
                     return Ok(result);
                 }
                 return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet("findall/pageIndex/{pageIndex}/pageSize/{pageSize}")]
+        public async Task<IActionResult> GetPatientPagination(int pageIndex,int pageSize)
+        {
+            try
+            {
+                var findPaginatedPatient = this.usecaseFactory.Create<GetPaginatedPatientInfoUseCase>();
+                findPaginatedPatient.PageIndex = pageIndex;
+                findPaginatedPatient.PageSize = pageSize;
+                var result = await findPaginatedPatient.Execute();
+                return Ok(result);
             }
             catch (Exception ex)
             {
