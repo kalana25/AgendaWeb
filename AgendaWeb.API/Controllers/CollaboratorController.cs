@@ -5,32 +5,32 @@ using System.Threading.Tasks;
 using AgendaWeb.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using AgendaWeb.UseCases.DTO;
-using AgendaWeb.UseCases.General.Patients.GetAllPatientWithFullInfo;
-using AgendaWeb.UseCases.General.Patients.GetPatientWithFullInfo;
-using AgendaWeb.UseCases.General.Patients.SavePatient;
-using AgendaWeb.UseCases.General.Patients.DeletePatient;
-using AgendaWeb.UseCases.General.Patients.UpdatePatient;
-using AgendaWeb.UseCases.General.Patients.GetPaginatedPatientInfo;
+using AgendaWeb.UseCases.General.Collaborators.GetAllCollaboratorWithFullInfo;
+using AgendaWeb.UseCases.General.Collaborators.GetCollaboratorWithFullInfo;
+using AgendaWeb.UseCases.General.Collaborators.GetPaginatedCollaboratorInfo;
+using AgendaWeb.UseCases.General.Collaborators.SaveCollaborator;
+using AgendaWeb.UseCases.General.Collaborators.DeleteCollaborator;
+using AgendaWeb.UseCases.General.Collaborators.UpdateCollaborator;
 
 namespace AgendaWeb.API.Controllers
 {
     [Route("api/[controller]")]
-    public class PatientsController : Controller
+    public class CollaboratorController : Controller
     {
         private readonly IUseCaseFactory usecaseFactory;
 
-        public PatientsController(IUseCaseFactory usecaseFactory)
+        public CollaboratorController(IUseCaseFactory usecaseFactory)
         {
             this.usecaseFactory = usecaseFactory;
         }
 
         [HttpGet("findall")]
-        public async Task<IActionResult> GetPatientsWithFullInfo()
+        public async Task<IActionResult> GetCollaboratorsWithFullInfo()
         {
             try
             {
-                var findAllPatientWithFullInfo = this.usecaseFactory.Create<GetAllPatientWithFullInfoUseCase>();
-                var result = await findAllPatientWithFullInfo.Execute();
+                var findAllCollaboratorsWithFullInfo = this.usecaseFactory.Create<GetAllCollaboratorWithFullInfoUseCase>();
+                var result = await findAllCollaboratorsWithFullInfo.Execute();
                 return Ok(result);
             }
             catch (Exception ex)
@@ -49,9 +49,9 @@ namespace AgendaWeb.API.Controllers
                     return BadRequest();
                 }
 
-                var findPatientWithFullInfo = this.usecaseFactory.Create<GetPatientWithFullInfoUseCase>();
-                findPatientWithFullInfo.Id = id;
-                var result = await findPatientWithFullInfo.Execute();
+                var findCollaboratorWithFullInfo = this.usecaseFactory.Create<GetCollaboratorWithFullInfoUseCase>();
+                findCollaboratorWithFullInfo.Id = id;
+                var result = await findCollaboratorWithFullInfo.Execute();
                 if (result == null)
                 {
                     return NotFound();
@@ -65,19 +65,19 @@ namespace AgendaWeb.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] PatientSaveDTO patient)
+        public async Task<IActionResult> Post([FromBody] CollaboratorSaveDTO collaborator)
         {
             try
             {
-                if (patient == null)
+                if (collaborator == null)
                 {
                     return BadRequest();
                 }
                 if (ModelState.IsValid)
                 {
-                    var savePatient = this.usecaseFactory.Create<SavePatientUseCase>();
-                    savePatient.DTO = patient;
-                    var result = await savePatient.Execute();
+                    var saveCollaborator = this.usecaseFactory.Create<SaveCollaboratorUseCase>();
+                    saveCollaborator.DTO = collaborator;
+                    var result = await saveCollaborator.Execute();
                     return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
                 }
                 return BadRequest();
@@ -97,9 +97,9 @@ namespace AgendaWeb.API.Controllers
                 {
                     return NotFound();
                 }
-                var deletePatient = usecaseFactory.Create<DeletePatientUseCase>();
-                deletePatient.Id = id;
-                await deletePatient.Execute();
+                var deleteCollaborator = usecaseFactory.Create<DeleteCollaboratorUseCase>();
+                deleteCollaborator.Id = id;
+                await deleteCollaborator.Execute();
                 return NoContent();
             }
             catch (Exception ex)
@@ -109,7 +109,7 @@ namespace AgendaWeb.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] PatientUpdateDTO patient)
+        public async Task<IActionResult> Put(int id, [FromBody] CollaboratorUpdateDTO collaborator)
         {
             try
             {
@@ -117,16 +117,16 @@ namespace AgendaWeb.API.Controllers
                 {
                     return NotFound();
                 }
-                if (patient == null)
+                if (collaborator == null)
                 {
                     return BadRequest();
                 }
                 if (ModelState.IsValid)
                 {
-                    var updatePatient = this.usecaseFactory.Create<UpdatePatientUseCase>();
-                    updatePatient.DTO = patient;
-                    updatePatient.Id = id;
-                    var result = await updatePatient.Execute();
+                    var updateCollaborator = this.usecaseFactory.Create<UpdateCollaboratorUseCase>();
+                    updateCollaborator.DTO = collaborator;
+                    updateCollaborator.Id = id;
+                    var result = await updateCollaborator.Execute();
                     return Ok(result);
                 }
                 return BadRequest();
@@ -138,14 +138,14 @@ namespace AgendaWeb.API.Controllers
         }
 
         [HttpGet("findall/pageIndex/{pageIndex}/pageSize/{pageSize}")]
-        public async Task<IActionResult> GetPatientPagination(int pageIndex,int pageSize)
+        public async Task<IActionResult> GetCollaboratorPagination(int pageIndex, int pageSize)
         {
             try
             {
-                var findPaginatedPatient = this.usecaseFactory.Create<GetPaginatedPatientInfoUseCase>();
-                findPaginatedPatient.PageIndex = pageIndex;
-                findPaginatedPatient.PageSize = pageSize;
-                var result = await findPaginatedPatient.Execute();
+                var findPaginatedCollaborator = this.usecaseFactory.Create<GetPaginatedCollaboratorInfoUseCase>();
+                findPaginatedCollaborator.PageIndex = pageIndex;
+                findPaginatedCollaborator.PageSize = pageSize;
+                var result = await findPaginatedCollaborator.Execute();
                 return Ok(result);
             }
             catch (Exception ex)
