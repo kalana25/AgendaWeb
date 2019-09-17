@@ -49,6 +49,10 @@ namespace AgendaWeb.API
 
             CreateMap<CommunicationInfoDTO, Communication>();
 
+            CreateMap<CollaboratorSaveDTO, Collaborator>();
+
+            CreateMap<CollaboratorUpdateDTO, Collaborator>();
+
 
             #endregion
 
@@ -78,6 +82,8 @@ namespace AgendaWeb.API
             CreateMap<Address, AddressInfoDTO>();
 
             CreateMap<Communication, CommunicationInfoDTO>();
+
+            CreateMap<Collaborator, CollaboratorWithFullInfoDTO>();
 
             #endregion
         }
