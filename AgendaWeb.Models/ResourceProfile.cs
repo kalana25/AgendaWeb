@@ -16,5 +16,7 @@ namespace AgendaWeb.Models
         public string Description { get; set; }
 
         public ICollection<ResourcePlanProfile> PlanProfiles { get; set; }
+
+        public ICollection<ResourceResourceProfile> ResourceResourceProfiles { get; set; }
     }
 }

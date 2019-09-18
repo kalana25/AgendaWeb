@@ -18,5 +18,7 @@ namespace AgendaWeb.Models
         public bool CustomStyle { get; set; }
 
         public ICollection<Service> Services { get; set; }
+
+        public ICollection<Resource> Resources { get; set; }
     }
 }

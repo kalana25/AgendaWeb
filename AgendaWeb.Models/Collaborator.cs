@@ -33,5 +33,7 @@ namespace AgendaWeb.Models
         public Address Address { get; set; }
 
         public Communication Communication { get; set; }
+
+        public Resource Resource { get; set; }
     }
 }
