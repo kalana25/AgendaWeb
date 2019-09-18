@@ -22,5 +22,7 @@ namespace AgendaWeb.DAL
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Communication> Communications { get; set; }
         public DbSet<Collaborator> Collaborators { get; set; }
+        public DbSet<ResourceResourceProfile> ResourceResourceProfiles { get; set; }
+        public DbSet<Resource> Resources { get; set; }
     }
 }
