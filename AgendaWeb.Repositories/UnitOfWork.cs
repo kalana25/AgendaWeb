@@ -10,6 +10,7 @@ using AgendaWeb.Repositories.Patients;
 using AgendaWeb.Repositories.Addresses;
 using AgendaWeb.Repositories.Communications;
 using AgendaWeb.Repositories.Collaborators;
+using AgendaWeb.Repositories.Resources;
 
 namespace AgendaWeb.Repositories
 {
@@ -23,6 +24,7 @@ namespace AgendaWeb.Repositories
         public IAddressRepository Addresses { get; set; }
         public ICommunicationRepository Communications { get; set; }
         public ICollaboratorRepository Collaborators { get; set; }
+        public IResourceRepository Resources { get; set; }
 
         public UnitOfWork(DataBaseContext context,
             IStyleRepository styleRepository,
@@ -31,7 +33,8 @@ namespace AgendaWeb.Repositories
             IPatientRepository patientRepository,
             IAddressRepository addressRepository,
             ICollaboratorRepository collaboratorRepository,
-            ICommunicationRepository communicationRepository)
+            ICommunicationRepository communicationRepository,
+            IResourceRepository resourceRepository)
         {
             this.context = context;
             Styles = styleRepository;
@@ -41,6 +44,7 @@ namespace AgendaWeb.Repositories
             Addresses = addressRepository;
             Communications = communicationRepository;
             Collaborators = collaboratorRepository;
+            Resources = resourceRepository;
         }
 
         public async Task<int> Complete()

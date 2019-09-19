@@ -9,6 +9,7 @@ using AgendaWeb.Repositories.Patients;
 using AgendaWeb.Repositories.Addresses;
 using AgendaWeb.Repositories.Communications;
 using AgendaWeb.Repositories.Collaborators;
+using AgendaWeb.Repositories.Resources;
 using AgendaWeb.Core.DI;
 
 
@@ -24,6 +25,7 @@ namespace AgendaWeb.Repositories
         IAddressRepository Addresses { get; }
         ICommunicationRepository Communications { get; }
         ICollaboratorRepository Collaborators { get; }
+        IResourceRepository Resources { get; }
         Task<int> Complete();
     }
 }
