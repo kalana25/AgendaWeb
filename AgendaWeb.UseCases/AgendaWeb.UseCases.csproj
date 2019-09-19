@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Folder Include="General\Resources\DeleteResource\" />
-    <Folder Include="General\Resources\GetResourceWithFullInfo\" />
     <Folder Include="General\Resources\GetPaginatedResourceWithFullInfo\" />
     <Folder Include="General\Resources\UpdateResource\" />
     <Folder Include="General\Resources\SaveResource\" />

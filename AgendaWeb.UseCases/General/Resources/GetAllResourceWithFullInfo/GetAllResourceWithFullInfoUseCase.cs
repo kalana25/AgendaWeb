@@ -20,7 +20,7 @@ namespace AgendaWeb.UseCases.General.Resources.GetAllResourceWithFullInfo
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<object> Execute()
+        public async Task<IEnumerable<ResourceWithFullInfoDTO>> Execute()
         {
             IEnumerable<Resource> resources = await unitOfWork.Resources.GetAllResourceWithFullInfo();
             IEnumerable<ResourceWithFullInfoDTO> result = mapper.Map<IEnumerable<Resource>, IEnumerable<ResourceWithFullInfoDTO>>(resources);
